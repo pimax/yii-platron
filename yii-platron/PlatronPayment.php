@@ -79,6 +79,7 @@ class PlatronPayment extends CApplicationComponent
                 <pg_status>ok</pg_status>
                 <pg_sig>'.$hash.'</pg_sig>
                 </response>';
+                Yii::app()->end();
  
                 return true;
             }
