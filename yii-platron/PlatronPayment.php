@@ -154,7 +154,7 @@ class PlatronPayment extends CApplicationComponent
     
     protected function getSalt($length = 6) 
     {
-        $validCharacters = "abcdefghijklmnopqrstuxyvwzABCDEFGHIJKLMNOPQRSTUXYVWZ+-*#&@!?";
+        $validCharacters = "abcdefghijklmnopqrstuxyvwzABCDEFGHIJKLMNOPQRSTUXYVWZ+-*#@!?";
         $validCharNumber = strlen($validCharacters);
 
         $result = "";
