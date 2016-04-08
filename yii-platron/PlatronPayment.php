@@ -46,7 +46,17 @@ class PlatronPayment extends CApplicationComponent
             'pg_user_phone' => isset($_REQUEST['pg_user_phone']) ? $_REQUEST['pg_user_phone'] : "",
             'pg_salt' => isset($_REQUEST['pg_salt']) ? $_REQUEST['pg_salt'] : "",
             'pg_sig' => isset($_REQUEST['pg_sig']) ? $_REQUEST['pg_sig'] : ""
-        ); 
+        );
+
+        // payment with bank card
+        if (isset($_REQUEST['pg_card_brand'])) {
+            $params += [
+                'pg_card_brand' => isset($_REQUEST['pg_card_brand']) ? $_REQUEST['pg_card_brand'] : "",
+                'pg_card_pan' => isset($_REQUEST['pg_card_pan']) ? $_REQUEST['pg_card_pan'] : "",
+                'pg_card_hash' => isset($_REQUEST['pg_card_hash']) ? $_REQUEST['pg_card_hash'] : "",
+                'pg_captured' => isset($_REQUEST['pg_captured']) ? $_REQUEST['pg_captured'] : ""
+            ];
+        }
         
         if (isset($_REQUEST['pg_description']))
         {
@@ -144,7 +154,7 @@ class PlatronPayment extends CApplicationComponent
     
     protected function getSalt($length = 6) 
     {
-        $validCharacters = "abcdefghijklmnopqrstuxyvwzABCDEFGHIJKLMNOPQRSTUXYVWZ+-*#&@!?";
+        $validCharacters = "abcdefghijklmnopqrstuxyvwzABCDEFGHIJKLMNOPQRSTUXYVWZ+-*#@!?";
         $validCharNumber = strlen($validCharacters);
 
         $result = "";
